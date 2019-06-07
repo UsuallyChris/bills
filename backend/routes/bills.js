@@ -1,6 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
+// VALIDATION
+const Joi = require('@hapi/joi');
+
+const schema = {
+  name: Joi.string().min(1).required(),
+  due_date: Joi.date().min('now').iso(),
+  amount_due: Joi.number().precision(2).positive()
+}
+
 // Bill model import
 const Bill = require('../models/Bill');
 
