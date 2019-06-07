@@ -2,8 +2,12 @@ const express = require('express');
 
 const app = express();
 
-const PORT = 3000;
+// Router Imports
+const bills = require('./routes/bills');
 
-app.listen(PORT, () => {
-  console.log(`Working on port ${PORT}`);
+// Route Configs
+app.use('/bills', bills);
+
+app.listen(3000, () => {
+  console.log(`Working on port 3000`);
 });
