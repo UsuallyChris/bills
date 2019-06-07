@@ -13,6 +13,9 @@ mongoose.connect(
   () => console.log('connected to db')
 );
 
+// Middleware
+app.use(express.json());
+
 // Router Imports
 const bills = require('./routes/bills');
 
