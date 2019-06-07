@@ -4,7 +4,7 @@
   "description": "Express.js server for bills app.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "devstart": "nodemon app.js"
   },
   "author": "Chris Schoonover",
   "license": "ISC",
