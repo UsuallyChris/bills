@@ -25,17 +25,22 @@ router.get('/:id', (req, res) => {
 
 // POST new bill
 router.post('/', async (req, res) => {
+
+  const { error } = Joi.validate(req.body, schema);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  };
+
   const bill = new Bill({
     name: req.body.name.trim(),
     due_date: req.body.due_date,
     amount_due: req.body.amount_due
   });
-  try {
-    const savedBill = await bill.save();
-    res.send(savedBill)
-  } catch(err) {
-    res.status(400).send(err);
-  }
+
+  await bill.save()
+    .then(bill => res.json(bill))
+    .catch(err => res.json(err))
+
 })
 
 // PUT update bill
