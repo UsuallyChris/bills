@@ -8,6 +8,4 @@ const bills = require('./routes/bills');
 // Route Configs
 app.use('/bills', bills);
 
-app.listen(3000, () => {
-  console.log(`Working on port 3000`);
-});
+app.listen(3000);
