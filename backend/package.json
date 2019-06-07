@@ -4,7 +4,7 @@
   "description": "Express.js server for bills app.",
   "main": "index.js",
   "scripts": {
-    "devstart": "nodemon app.js"
+    "dev": "nodemon app.js"
   },
   "author": "Chris Schoonover",
   "license": "ISC",
@@ -13,6 +13,7 @@
     "url": "https://github.com/UsuallyChris/bills"
   },
   "dependencies": {
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "mongoose": "^5.5.13"
   },
