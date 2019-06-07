@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Express.js server for bills app.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "Chris Schoonover",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UsuallyChris/bills"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.5.13"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
