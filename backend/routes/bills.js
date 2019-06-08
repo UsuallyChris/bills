@@ -1,32 +1,22 @@
 const express = require('express');
 const router = express.Router();
-
-// VALIDATION
-const Joi = require('@hapi/joi');
-
-const schema = {
-  name: Joi.string().min(1).required(),
-  due_date: Joi.date().min('now').iso(),
-  amount_due: Joi.number().precision(2).positive()
-}
+const { billPostValidation } = require('../validation');
 
 // Bill model import
 const Bill = require('../models/Bill');
 
 // GET all bills
 router.get('/', (req, res) => {
-  res.send('GET all bills');
-})
-
-// GET bill detail
-router.get('/:id', (req, res) => {
-  res.send(`GET detail view for bill id ${req.params.id}`)
+  Bill.find()
+    .sort({ due_date: 1 })
+    .then(bills => res.json(bills))
+    .catch(err => res.json(err));
 })
 
 // POST new bill
 router.post('/', async (req, res) => {
 
-  const { error } = Joi.validate(req.body, schema);
+  const { error } = billPostValidation(req.body);
   if (error) {
     return res.status(400).send(error.details[0].message);
   };
@@ -41,6 +31,13 @@ router.post('/', async (req, res) => {
     .then(bill => res.json(bill))
     .catch(err => res.json(err))
 
+})
+
+// GET bill detail
+router.get('/:id', (req, res) => {
+  Bill.findById(req.params.id)
+    .then(bill => res.json(bill))
+    .catch(err => res.json(err))
 })
 
 // PUT update bill
