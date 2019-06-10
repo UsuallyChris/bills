@@ -35,14 +35,16 @@ class Gutter extends Component{
   render() {
     return(
       <div className="gutter">
-        {this.state.bills.map(bill => (
-          <BillCard
-            key={bill._id}
-            name={bill.name}
-            date_due={bill.formatted_date_due}
-            amount_due={bill.formatted_amount_due}
-          />
-        ))}
+        <div className="gutter-card-container">
+          {this.state.bills.map(bill => (
+            <BillCard
+              key={bill._id}
+              name={bill.name}
+              date_due={bill.formatted_date_due}
+              amount_due={bill.formatted_amount_due}
+            />
+          ))}
+        </div>
       </div>
     );
   } 
