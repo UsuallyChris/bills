@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const billSchema = new mongoose.Schema({
+const BillSchema = new mongoose.Schema({
   name: {
     type: String,
     require: true, 
@@ -12,7 +12,31 @@ const billSchema = new mongoose.Schema({
   amount_due: {
     type: Number,
     required: true
-  }
+  },
 });
 
-module.exports = mongoose.model('Bill', billSchema);
+BillSchema
+  .virtual('formatted_date_due')
+  .get(function() {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const month = months[this.date_due.getUTCMonth()];
+
+    return `${month} ${this.date_due.getUTCDate()}, ${this.date_due.getUTCFullYear()}`
+  });
+
+BillSchema
+  .virtual('formatted_amount_due')
+  .get(function() {
+
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2
+    })
+
+    return formatter.format(this.amount_due);
+  })
+
+BillSchema.set('toJSON', { getters: true });
+
+module.exports = mongoose.model('Bill', BillSchema);

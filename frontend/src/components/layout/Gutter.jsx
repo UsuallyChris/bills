@@ -39,8 +39,8 @@ class Gutter extends Component{
           <BillCard
             key={bill._id}
             name={bill.name}
-            date_due={bill.date_due}
-            amount_due={bill.amount_due}
+            date_due={bill.formatted_date_due}
+            amount_due={bill.formatted_amount_due}
           />
         ))}
       </div>
