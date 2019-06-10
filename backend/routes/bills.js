@@ -6,7 +6,7 @@ const { billPostValidation, billPutValidation } = require('../validation');
 const Bill = require('../models/Bill');
 
 // GET all bills
-router.get('/', (res) => {
+router.get('/', (req, res) => {
   Bill.find()
     .sort({ due_date: 1 })
     .then(bills => res.json(bills))
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
 router.get('/:id', (req, res) => {
   Bill.findById(req.params.id)
     .then(bill => res.json(bill))
-    .catch(err => res.send(err));
+    .catch(err => res.status(404).json(err));
 })
 
 // PUT update bill
@@ -50,7 +50,7 @@ router.put('/:id', async (req, res) => {
 
   await Bill.findByIdAndUpdate(req.params.id, req.body, {new: true})
     .then(bill => res.json(bill))
-    .catch(err => res.send(err));
+    .catch(err => res.json(err));
 });
 
 // DELETE bill
