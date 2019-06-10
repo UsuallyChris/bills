@@ -5,7 +5,7 @@ const billSchema = new mongoose.Schema({
     type: String,
     require: true, 
   },
-  due_date: {
+  date_due: {
     type: Date,
     required: true
   },

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+// Component Imports
+import BillCard from '../cards/BillCard';
+
 class Gutter extends Component{
   constructor(props) {
     super(props);
@@ -32,7 +35,14 @@ class Gutter extends Component{
   render() {
     return(
       <div className="gutter">
-        <h1>Gutter</h1>
+        {this.state.bills.map(bill => (
+          <BillCard
+            key={bill._id}
+            name={bill.name}
+            date_due={bill.date_due}
+            amount_due={bill.amount_due}
+          />
+        ))}
       </div>
     );
   } 

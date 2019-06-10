@@ -8,7 +8,7 @@ const Bill = require('../models/Bill');
 // GET all bills
 router.get('/', (req, res) => {
   Bill.find()
-    .sort({ due_date: 1 })
+    .sort({ date_due: 1 })
     .then(bills => res.json(bills))
     .catch(err => res.json(err));
 })
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
 
   const bill = new Bill({
     name: req.body.name.trim(),
-    due_date: req.body.due_date,
+    date_due: req.body.date_due,
     amount_due: req.body.amount_due
   });
 
