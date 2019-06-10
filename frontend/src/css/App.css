@@ -26,3 +26,33 @@ h5,
 h6 {
   font-family: 'Alegreya';
 }
+
+/** LAYOUT */
+.app-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+}
+
+.gutter {
+  width: 25vw;
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #9E9E9E;
+  overflow: scroll;
+}
+
+.main{
+  width: 75vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
