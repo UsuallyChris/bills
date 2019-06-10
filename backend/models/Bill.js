@@ -28,13 +28,13 @@ BillSchema
   .virtual('formatted_amount_due')
   .get(function() {
 
-    const formatter = new Intl.NumberFormat('en-US', {
+    const formattedAmountDue = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 2
     })
 
-    return formatter.format(this.amount_due);
+    return formattedAmountDue.format(this.amount_due);
   })
 
 BillSchema.set('toJSON', { getters: true });
