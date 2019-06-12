@@ -1,42 +1,23 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
+// Redux Imports
+import { connect } from 'react-redux';
+import { getBills } from '../../actions/bills';
 
 // Component Imports
 import BillCard from '../cards/BillCard';
 
 class Gutter extends Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      bills: []
-    }
-    
-    this.getBills = this.getBills.bind(this);
-  };
 
   componentDidMount() {
-    this.getBills();
+    this.props.getBills();
   }
-
-  getBills() {
-    axios.get('http://localhost:5000/api/bills/')
-      .then(res => {
-        console.log(res.data);
-        this.setState({
-          bills: res.data
-        })
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
-
   
   render() {
     return(
       <div className="gutter">
         <div className="gutter-card-container">
-          {this.state.bills.map(bill => (
+          {this.props.bills.map(bill => (
             <BillCard
               key={bill._id}
               name={bill.name}
@@ -50,4 +31,8 @@ class Gutter extends Component{
   } 
 };
 
-export default Gutter;
+const mapStateToProps = state => ({
+  bills: state.bills.bills,
+})
+
+export default connect(mapStateToProps, { getBills })(Gutter);
