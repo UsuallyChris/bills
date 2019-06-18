@@ -1,4 +1,4 @@
-import { GET_BILLS } from '../actions/types';
+import { GET_BILLS, DELETE_BILL } from '../actions/types';
 
 const initialState = {
   bills: []
@@ -10,6 +10,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         bills: action.payload
+      };
+    
+    case DELETE_BILL:
+      return {
+        ...state,
+        bills: state.bills.filter(bill => bill._id !== action.payload)
       };
 
     default:

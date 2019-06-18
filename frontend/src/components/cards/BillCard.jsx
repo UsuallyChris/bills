@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
+// Redux Imports 
+import { connect } from 'react-redux';
+import { deleteBill } from '../../actions/bills';
 
 class BillCard extends Component {
   constructor(props) {
@@ -12,15 +15,6 @@ class BillCard extends Component {
     }
   }
   
-  onDelete(id) {
-    axios.delete(`http://localhost:5000/api/bills/${id}/`)
-      .then(res => {
-        console.log(res.data);
-      }).catch(err => {
-        console.log(err.response);
-      })
-  }
-
   componentDidMount() {
     this.setState({
       name: this.props.name,
@@ -40,11 +34,15 @@ class BillCard extends Component {
         </div>
         <div className="card-buttons">
           <button>Edit</button>
-          <button onClick={this.onDelete.bind(this, this.props.id)}>Delete</button>
+          <button onClick={this.props.deleteBill.bind(this, this.props.id)}>Delete</button>
         </div>
       </div>
     );
   };
 };
 
-export default BillCard;
+const mapStateToProps = state => ({
+  bills: state.bills.bills
+})
+
+export default connect(mapStateToProps, { deleteBill })(BillCard);
