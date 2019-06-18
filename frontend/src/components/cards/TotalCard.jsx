@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 // Redux Imports
-import { connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 class TotalCard extends Component {
-  
+
   render() {
 
     let total = 0;
