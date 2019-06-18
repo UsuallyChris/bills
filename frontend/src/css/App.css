@@ -85,4 +85,7 @@ h6 {
   border-radius: 5px;
   padding: 32px;
   background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
