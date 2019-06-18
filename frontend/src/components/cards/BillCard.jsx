@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class BillCard extends Component {
   constructor(props) {
@@ -9,6 +10,15 @@ class BillCard extends Component {
       amount_due: '',
       id: ''
     }
+  }
+  
+  onDelete(id) {
+    axios.delete(`http://localhost:5000/api/bills/${id}/`)
+      .then(res => {
+        console.log(res.data);
+      }).catch(err => {
+        console.log(err.response);
+      })
   }
 
   componentDidMount() {
@@ -30,7 +40,7 @@ class BillCard extends Component {
         </div>
         <div className="card-buttons">
           <button>Edit</button>
-          <button>Delete</button>
+          <button onClick={this.onDelete.bind(this, this.props.id)}>Delete</button>
         </div>
       </div>
     );
