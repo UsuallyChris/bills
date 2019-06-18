@@ -20,9 +20,12 @@ class Gutter extends Component{
           {this.props.bills.map(bill => (
             <BillCard
               key={bill._id}
+              id={bill._id}
               name={bill.name}
-              date_due={bill.formatted_date_due}
-              amount_due={bill.formatted_amount_due}
+              date_due={bill.date_due}
+              formatted_date_due={bill.formatted_date_due}
+              amount_due={bill.amount_due}
+              formatted_amount_due={bill.formatted_amount_due}
             />
           ))}
         </div>
