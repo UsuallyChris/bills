@@ -10,8 +10,7 @@ dotenv.config();
 // Mongoose Connection
 mongoose.connect(
   process.env.DB_CONNECT,
-  { useNewUrlParser: true},
-  () => console.log('connected to db')
+  { useNewUrlParser: true }
 );
 
 // Middleware
