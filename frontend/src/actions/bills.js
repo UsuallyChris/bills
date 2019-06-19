@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Action Type Imports 
-import { GET_BILLS, DELETE_BILL } from './types';
+import { GET_BILLS, DELETE_BILL, ADD_BILL } from './types';
 
 
 // GET JOBS ACTIONS
@@ -21,6 +21,16 @@ export const deleteBill = (id) => dispatch => {
       dispatch({
         type: DELETE_BILL,
         payload: id
+      })
+    }).catch(err => console.log(err.response));
+}
+
+export const addBill = (bill) => dispatch => {
+  axios.post('http://localhost:5000/api/bills', bill)
+    .then(res => {
+      dispatch({
+        type: ADD_BILL,
+        payload: res.data
       })
     }).catch(err => console.log(err.response));
 }

@@ -1,5 +1,8 @@
 import React , { Component } from 'react';
-import axios from 'axios';
+
+// Redux Imports
+import { connect } from 'react-redux';
+import { addBill } from '../../actions/bills';
 
 class AddBillCard extends Component {
   constructor(props) {
@@ -14,15 +17,6 @@ class AddBillCard extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  addBill(bill) {
-    axios.post('http://localhost:5000/api/bills', bill)
-      .then(res => {
-        console.log(res);
-      }).catch(err => {
-        console.log(err.response);
-      })
-  }
-
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -33,7 +27,12 @@ class AddBillCard extends Component {
     e.preventDefault();
     const { name, date_due, amount_due } = this.state;
     const bill = { name, date_due, amount_due };
-    this.addBill(bill);
+    this.props.addBill(bill);
+    this.setState({
+      name: '',
+      date_due: '',
+      amount_due: ''
+    })
   }
 
   render() {
@@ -54,4 +53,4 @@ class AddBillCard extends Component {
   }
 }
 
-export default AddBillCard;
+export default connect(null, { addBill })(AddBillCard);
