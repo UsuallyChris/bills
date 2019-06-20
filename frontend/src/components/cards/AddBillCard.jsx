@@ -40,9 +40,15 @@ class AddBillCard extends Component {
       <div className="bill-card card-shadow">
         <form onSubmit={this.onSubmit}>
           <div className="card-content">
-            <input type="text" name="name" placeholder="Name" onChange={this.onChange} value={this.state.name}/>
-            <input type="text" name="amount_due" placeholder="Amount Due" onChange={this.onChange} value={this.state.amount_due}/>
-            <input type="text" name="date_due" placeholder="Date Due" onChange={this.onChange} value={this.state.date_due}/>
+            <div className="input-wrapper">
+              <input type="text" name="name" placeholder="Name" onChange={this.onChange} value={this.state.name}/>
+            </div>  
+            <div className="input-wrapper">
+              <input type="text" name="amount_due" placeholder="Amount Due" onChange={this.onChange} value={this.state.amount_due}/>
+            </div>  
+            <div className="input-wrapper">
+              <input type="text" name="date_due" placeholder="Date Due" onChange={this.onChange} value={this.state.date_due}/>
+            </div>  
           </div>
           <div className="card-buttons">
             <input type="submit" value="Add Bill"/>

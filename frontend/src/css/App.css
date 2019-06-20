@@ -97,3 +97,13 @@ h6 {
   justify-content: space-between;
   padding: 16px 0;
 }
+
+/** INPUT AND FORMS */
+input[type=text] {
+  font-size: inherit;
+  font-family: inherit;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-bottom-color: hsla(341, 97%, 59%, 0.2);
+  padding: 12px 20px;
+}
