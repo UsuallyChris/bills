@@ -88,7 +88,7 @@ h6 {
   background: #fff;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .card-buttons {
@@ -100,6 +100,10 @@ h6 {
 }
 
 /** INPUT AND FORMS */
+form {
+  width: 90%;
+}
+
 input[type=text] {
   font-size: inherit;
   font-family: inherit;
@@ -107,10 +111,20 @@ input[type=text] {
   border: 1px solid transparent;
   border-bottom-color: #D1C4E9;
   padding: 12px 20px;
+  width: 100%;
 }
 
 input[type=text]:focus {
   outline: none;
+}
+
+.add-card-buttons {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px 0;
+  width: 80%;
+  margin: 16px auto 0;
 }
 
 .input-border-bottom {

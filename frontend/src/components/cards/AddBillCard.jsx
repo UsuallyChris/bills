@@ -53,7 +53,7 @@ class AddBillCard extends Component {
               <span className="input-border-bottom"></span>
             </div>  
           </div>
-          <div className="card-buttons">
+          <div className="add-card-buttons">
             <input type="submit" value="Add Bill"/>
           </div>
         </form>
