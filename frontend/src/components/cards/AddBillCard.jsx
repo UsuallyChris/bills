@@ -37,7 +37,7 @@ class AddBillCard extends Component {
 
   render() {
     return(
-      <div className="bill-card card-shadow">
+      <div className="bill-card add-bill-shadow">
         <form onSubmit={this.onSubmit}>
           <div className="card-content">
             <div className="input-wrapper">

@@ -80,6 +80,13 @@ h6 {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+.add-bill-shadow {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
 .bill-card {
   margin: 5% 2.5%;
   width: 80%;
@@ -124,6 +131,11 @@ input[type=submit] {
   color: #fff;
   border-radius: 5px;
   padding: 16px 0px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+input[type=submit]:hover {
+  background-color: #9575CD;
 }
 
 .add-card-buttons {
