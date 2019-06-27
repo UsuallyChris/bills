@@ -118,12 +118,20 @@ input[type=text]:focus {
   outline: none;
 }
 
+input[type=submit] {
+  border: none;
+  background-color: #673AB7;
+  color: #fff;
+  border-radius: 5px;
+  padding: 16px 0px;
+}
+
 .add-card-buttons {
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: 16px 0;
-  width: 80%;
+  width: 60%;
   margin: 16px auto 0;
 }
 
