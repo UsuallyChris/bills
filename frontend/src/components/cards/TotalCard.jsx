@@ -6,13 +6,15 @@ import { connect } from 'react-redux';
 class TotalCard extends Component {
 
   render() {
-
+    
+    // Formatting for money
     const formattedAmountDue = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 2
     })
 
+    // Calculate Total
     let total = 0;
     this.props.bills.map(bill => {
       return total += bill.amount_due
