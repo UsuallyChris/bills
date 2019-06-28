@@ -4,6 +4,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteBill } from '../../actions/bills';
 
+// Font Awesome Imports
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+
 class BillCard extends Component {
   constructor(props) {
     super(props);
@@ -33,8 +37,8 @@ class BillCard extends Component {
           <p>{this.props.formatted_amount_due}</p>
         </div>
         <div className="card-buttons">
-          <button>Edit</button>
-          <button onClick={this.props.deleteBill.bind(this, this.props.id)}>Delete</button>
+          <button><FontAwesomeIcon icon={faEdit}/></button>
+          <button onClick={this.props.deleteBill.bind(this, this.props.id)}><FontAwesomeIcon icon={faTrashAlt}/></button>
         </div>
       </div>
     );
