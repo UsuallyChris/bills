@@ -189,12 +189,18 @@ input:focus ~ span {
 
 .edit-button {
   cursor: pointer;
+  color: #D1C4E9;
+  transition: color .3s ease-in-out;
+}
+
+.edit-button:hover {
+  color: #673AB7;
 }
 
 .delete-button {
   cursor: pointer;
   color: #FFCDD2;
-  transition: color .5s ease-in-out;
+  transition: color .3s ease-in-out;
 }
 
 .delete-button:hover {
