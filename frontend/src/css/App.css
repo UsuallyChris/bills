@@ -186,3 +186,21 @@ input:focus ~ span {
   background-color: transparent;
   font-size: 28px;
 }
+
+.edit-button {
+  cursor: pointer;
+}
+
+.delete-button {
+  cursor: pointer;
+  color: #FFCDD2;
+  transition: color .5s ease-in-out;
+}
+
+.delete-button:hover {
+  color: #E74C3C;
+}
+
+.delete-button-container {
+  padding-right: 14px;
+}

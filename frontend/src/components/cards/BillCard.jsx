@@ -37,8 +37,8 @@ class BillCard extends Component {
           <p>{this.props.formatted_amount_due}</p>
         </div>
         <div className="card-buttons">
-          <button><FontAwesomeIcon icon={faEdit}/></button>
-          <button onClick={this.props.deleteBill.bind(this, this.props.id)}><FontAwesomeIcon icon={faTrashAlt}/></button>
+          <button><FontAwesomeIcon className="edit-button" icon={faEdit}/></button>
+          <button className="delete-button-container" onClick={this.props.deleteBill.bind(this, this.props.id)}><FontAwesomeIcon className="delete-button" icon={faTrashAlt}/></button>
         </div>
       </div>
     );
