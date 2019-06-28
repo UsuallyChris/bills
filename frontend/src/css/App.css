@@ -87,7 +87,7 @@ h6 {
   transition: 0.3s;
 }
 
-.bill-card {
+.add-bill-card {
   margin: 5% 2.5%;
   width: 80%;
   border-radius: 5px;
@@ -96,6 +96,17 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.bill-card {
+  margin: 5% 2.5%;
+  width: 80%;
+  border-radius: 5px;
+  padding: 32px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card-buttons {
