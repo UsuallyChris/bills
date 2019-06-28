@@ -180,3 +180,9 @@ input:focus ~ span {
 .input-wrapper {
   position: relative;
 }
+
+.card-buttons button {
+  border: none;
+  background-color: transparent;
+  font-size: 28px;
+}
