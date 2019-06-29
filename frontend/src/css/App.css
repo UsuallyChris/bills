@@ -107,7 +107,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 200.233px;
+  height: 200.233px;
 }
 
 .card-buttons {
@@ -124,7 +124,6 @@ form {
 }
 
 input[type=text] {
-  font-size: inherit;
   font-family: inherit;
   background-color: transparent;
   border: 1px solid transparent;
@@ -222,4 +221,22 @@ input:focus ~ span {
 
 .delete-button-container {
   padding-right: 14px;
+}
+
+.editing {
+  width: 75%;
+}
+
+.editing input {
+  padding: 0;
+}
+
+.h2-input {
+  font-size: 1.5em;
+  margin: 0.83em 0;
+  font-family: 'Montserrat';
+}
+
+.p-input {
+  margin: 1em 0;
 }

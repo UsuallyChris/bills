@@ -27,7 +27,7 @@ class BillCard extends Component {
   componentDidMount() {
     this.setState({
       name: this.props.name,
-      date_due: this.props.date_due,
+      date_due: this.props.date_due.toString().substring(0, 10),
       amount_due: this.props.amount_due,
       id: this.props.id
     })
@@ -56,16 +56,16 @@ class BillCard extends Component {
     if(this.state.editing) {
       return (
         <div className="bill-card card-shadow">
-          <form className="card-content">
-            <div className="input-wrapper">
+          <form className="card-content editing">
+            <div className="input-wrapper h2-input">
               <input type="text" name="name" onChange={this.onChange} value={this.state.name}/>
               <span className="input-border-bottom"></span>
             </div>
-            <div className="input-wrapper">
+            <div className="input-wrapper p-input">
               <input type="text" name="date_due" onChange={this.onChange} value={this.state.date_due}/>
               <span className="input-border-bottom"></span>
             </div>
-            <div className="input-wrapper">
+            <div className="input-wrapper p-input">
               <input type="text" name="amount_due" onChange={this.onChange} value={this.state.amount_due}/>
               <span className="input-border-bottom"></span>
             </div>
