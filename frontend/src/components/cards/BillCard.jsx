@@ -17,6 +17,8 @@ class BillCard extends Component {
       date_due: '',
       amount_due: '',
       id: '',
+      formatted_date_due: '',
+      formatted_amount_due: '',
       editing: false
     }
 
@@ -29,6 +31,8 @@ class BillCard extends Component {
       name: this.props.name,
       date_due: this.props.date_due.toString().substring(0, 10),
       amount_due: this.props.amount_due,
+      formatted_date_due: this.props.formatted_date_due,
+      formatted_amount_due: this.props.formatted_amount_due,
       id: this.props.id
     })
   }
@@ -81,9 +85,9 @@ class BillCard extends Component {
     return (
       <div className="bill-card card-shadow">
         <div className="card-content">
-          <h2>{this.props.name}</h2>
-          <p>{this.props.formatted_date_due}</p>
-          <p>{this.props.formatted_amount_due}</p>
+          <h2>{this.state.name}</h2>
+          <p>{this.state.formatted_date_due}</p>
+          <p>{this.state.formatted_amount_due}</p>
         </div>
         <div className="card-buttons">
           <button onClick={this.toggleEditing}><FontAwesomeIcon className="edit-button" icon={faEdit}/></button>
