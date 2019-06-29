@@ -9,6 +9,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import { faWindowClose, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 
+// Axios Imports
+import axios from 'axios';
+
 class BillCard extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +27,7 @@ class BillCard extends Component {
 
     this.toggleEditing = this.toggleEditing.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.submitEdit = this.submitEdit.bind(this);
   }
   
   componentDidMount() {
@@ -55,6 +59,18 @@ class BillCard extends Component {
     })
   }
 
+  submitEdit(e) {
+    e.preventDefault();
+    const { name, date_due, amount_due } = this.state;
+    const bill = { name, date_due, amount_due };
+    axios.put(`http://localhost:5000/api/bills/${this.state.id}`, bill)
+      .then(res => {
+        console.log(res);
+        this.toggleEditing();
+      })
+      .catch(err => console.log(err.response));
+  }
+
   render() {
 
     if(this.state.editing) {
@@ -76,7 +92,7 @@ class BillCard extends Component {
           </form>
           <div className="card-buttons">
             <button onClick={this.toggleEditing}><FontAwesomeIcon className="cancel-edit-button" icon={faWindowClose}/></button>
-            <button onClick={this.props.deleteBill.bind(this, this.props.id)}><FontAwesomeIcon className="accept-edit-button" icon={faCheckCircle}/></button>
+            <button onClick={this.submitEdit}><FontAwesomeIcon className="accept-edit-button" icon={faCheckCircle}/></button>
           </div>
         </div>
       );

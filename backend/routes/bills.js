@@ -48,7 +48,7 @@ router.put('/:id', async (req, res) => {
     return res.status(400).send(error.details[0].message);
   };
 
-  await Bill.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  await Bill.findByIdAndUpdate(req.params.id, req.body, {new: true, useFindAndModify: false})
     .then(bill => res.json(bill))
     .catch(err => res.json(err));
 });
