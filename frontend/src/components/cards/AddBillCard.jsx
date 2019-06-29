@@ -43,13 +43,13 @@ class AddBillCard extends Component {
             <div className="input-wrapper">
               <input type="text" name="name" placeholder="Name" onChange={this.onChange} value={this.state.name}/>
               <span className="input-border-bottom"></span>
-            </div>  
-            <div className="input-wrapper">
-              <input type="text" name="amount_due" placeholder="Amount Due" onChange={this.onChange} value={this.state.amount_due}/>
-              <span className="input-border-bottom"></span>
-            </div>  
+            </div>             
             <div className="input-wrapper">
               <input type="text" name="date_due" placeholder="Date Due" onChange={this.onChange} value={this.state.date_due}/>
+              <span className="input-border-bottom"></span>
+            </div> 
+            <div className="input-wrapper">
+              <input type="text" name="amount_due" placeholder="Amount Due" onChange={this.onChange} value={this.state.amount_due}/>
               <span className="input-border-bottom"></span>
             </div>  
           </div>
