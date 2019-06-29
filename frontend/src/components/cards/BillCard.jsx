@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 
 // Redux Imports 
 import { connect } from 'react-redux';
-import { deleteBill } from '../../actions/bills';
+import { deleteBill, updateBill } from '../../actions/bills';
 
 // Font Awesome Imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import { faWindowClose, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
-
-// Axios Imports
-import axios from 'axios';
 
 class BillCard extends Component {
   constructor(props) {
@@ -20,8 +17,6 @@ class BillCard extends Component {
       date_due: '',
       amount_due: '',
       id: '',
-      formatted_date_due: '',
-      formatted_amount_due: '',
       editing: false
     }
 
@@ -35,8 +30,6 @@ class BillCard extends Component {
       name: this.props.name,
       date_due: this.props.date_due.toString().substring(0, 10),
       amount_due: this.props.amount_due,
-      formatted_date_due: this.props.formatted_date_due,
-      formatted_amount_due: this.props.formatted_amount_due,
       id: this.props.id
     })
   }
@@ -63,12 +56,8 @@ class BillCard extends Component {
     e.preventDefault();
     const { name, date_due, amount_due } = this.state;
     const bill = { name, date_due, amount_due };
-    axios.put(`http://localhost:5000/api/bills/${this.state.id}`, bill)
-      .then(res => {
-        console.log(res);
-        this.toggleEditing();
-      })
-      .catch(err => console.log(err.response));
+    this.props.updateBill(this.state.id, bill);
+    this.toggleEditing();
   }
 
   render() {
@@ -101,9 +90,9 @@ class BillCard extends Component {
     return (
       <div className="bill-card card-shadow">
         <div className="card-content">
-          <h2>{this.state.name}</h2>
-          <p>{this.state.formatted_date_due}</p>
-          <p>{this.state.formatted_amount_due}</p>
+          <h2>{this.props.name}</h2>
+          <p>{this.props.formatted_date_due}</p>
+          <p>{this.props.formatted_amount_due}</p>
         </div>
         <div className="card-buttons">
           <button onClick={this.toggleEditing}><FontAwesomeIcon className="edit-button" icon={faEdit}/></button>
@@ -118,4 +107,4 @@ const mapStateToProps = state => ({
   bills: state.bills.bills
 })
 
-export default connect(mapStateToProps, { deleteBill })(BillCard);
+export default connect(mapStateToProps, { deleteBill, updateBill })(BillCard);

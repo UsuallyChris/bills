@@ -1,4 +1,4 @@
-import { GET_BILLS, DELETE_BILL, ADD_BILL } from '../actions/types';
+import { GET_BILLS, DELETE_BILL, ADD_BILL, UPDATE_BILL } from '../actions/types';
 
 const initialState = {
   bills: []
@@ -22,6 +22,12 @@ export default function(state = initialState, action) {
       return{
         ...state,
         bills: [...state.bills, action.payload]
+      }
+
+    case UPDATE_BILL:
+      return{
+        ...state,
+        bills: state.bills.map(bill => bill._id === action.payload.id ? action.payload : bill)
       }
 
     default:
