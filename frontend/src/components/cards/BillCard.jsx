@@ -7,6 +7,7 @@ import { deleteBill } from '../../actions/bills';
 // Font Awesome Imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import { faWindowClose, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 
 class BillCard extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class BillCard extends Component {
       editing: false
     }
 
-    this.toggleEditingOn = this.toggleEditingOn.bind(this);
+    this.toggleEditing = this.toggleEditing.bind(this);
     this.onChange = this.onChange.bind(this);
   }
   
@@ -32,7 +33,7 @@ class BillCard extends Component {
     })
   }
 
-  toggleEditingOn() {
+  toggleEditing() {
     if(this.state.editing === false) {
       this.setState({
         editing: true
@@ -61,8 +62,8 @@ class BillCard extends Component {
             <input type="text" name="amount_due" onChange={this.onChange} value={this.state.amount_due}/>
           </form>
           <div className="card-buttons">
-            <button onClick={this}><FontAwesomeIcon className="edit-button" icon={faEdit}/></button>
-            <button className="delete-button-container" onClick={this.props.deleteBill.bind(this, this.props.id)}><FontAwesomeIcon className="delete-button" icon={faTrashAlt}/></button>
+            <button onClick={this.toggleEditing}><FontAwesomeIcon className="cancel-edit-button" icon={faWindowClose}/></button>
+            <button onClick={this.props.deleteBill.bind(this, this.props.id)}><FontAwesomeIcon className="accept-edit-button" icon={faCheckCircle}/></button>
           </div>
         </div>
       );
@@ -76,7 +77,7 @@ class BillCard extends Component {
           <p>{this.props.formatted_amount_due}</p>
         </div>
         <div className="card-buttons">
-          <button onClick={this.toggleEditingOn}><FontAwesomeIcon className="edit-button" icon={faEdit}/></button>
+          <button onClick={this.toggleEditing}><FontAwesomeIcon className="edit-button" icon={faEdit}/></button>
           <button className="delete-button-container" onClick={this.props.deleteBill.bind(this, this.props.id)}><FontAwesomeIcon className="delete-button" icon={faTrashAlt}/></button>
         </div>
       </div>

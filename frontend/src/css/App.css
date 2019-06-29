@@ -107,6 +107,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 200.233px;
 }
 
 .card-buttons {
@@ -197,13 +198,25 @@ input:focus ~ span {
   color: #673AB7;
 }
 
-.delete-button {
+.accept-edit-button {
+  cursor: pointer;
+  transition: color .3s ease-in-out;
+  color: #A5D6A7;
+}
+
+.accept-edit-button:hover {
+  color: #2ECC71;
+}
+
+.delete-button,
+.cancel-edit-button {
   cursor: pointer;
   color: #FFCDD2;
   transition: color .3s ease-in-out;
 }
 
-.delete-button:hover {
+.delete-button:hover,
+.cancel-edit-button:hover {
   color: #E74C3C;
 }
 
