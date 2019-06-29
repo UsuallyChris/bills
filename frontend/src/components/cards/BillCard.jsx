@@ -57,9 +57,18 @@ class BillCard extends Component {
       return (
         <div className="bill-card card-shadow">
           <form className="card-content">
-            <input type="text" name="name" onChange={this.onChange} value={this.state.name}/>
-            <input type="text" name="date_due" onChange={this.onChange} value={this.state.date_due}/>
-            <input type="text" name="amount_due" onChange={this.onChange} value={this.state.amount_due}/>
+            <div className="input-wrapper">
+              <input type="text" name="name" onChange={this.onChange} value={this.state.name}/>
+              <span className="input-border-bottom"></span>
+            </div>
+            <div className="input-wrapper">
+              <input type="text" name="date_due" onChange={this.onChange} value={this.state.date_due}/>
+              <span className="input-border-bottom"></span>
+            </div>
+            <div className="input-wrapper">
+              <input type="text" name="amount_due" onChange={this.onChange} value={this.state.amount_due}/>
+              <span className="input-border-bottom"></span>
+            </div>
           </form>
           <div className="card-buttons">
             <button onClick={this.toggleEditing}><FontAwesomeIcon className="cancel-edit-button" icon={faWindowClose}/></button>
