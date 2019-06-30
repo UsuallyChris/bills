@@ -27,6 +27,7 @@ class BillCard extends Component {
 
     this.toggleEditing = this.toggleEditing.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onChangeDate = this.onChangeDate.bind(this);
     this.submitEdit = this.submitEdit.bind(this);
   }
   
@@ -54,6 +55,12 @@ class BillCard extends Component {
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value
+    })
+  }
+
+  onChangeDate(date) {
+    this.setState({
+      date_due: date
     })
   }
 
