@@ -4,6 +4,10 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import { addBill } from '../../actions/bills';
 
+// Date Picker Import
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 class AddBillCard extends Component {
   constructor(props) {
     super(props);
@@ -14,12 +18,19 @@ class AddBillCard extends Component {
     }
 
     this.onChange = this.onChange.bind(this);
+    this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value
+    })
+  }
+
+  onChangeDate(date) {
+    this.setState({
+      date_due: date
     })
   }
 
@@ -45,7 +56,14 @@ class AddBillCard extends Component {
               <span className="input-border-bottom"></span>
             </div>             
             <div className="input-wrapper">
-              <input type="text" name="date_due" placeholder="Date Due" onChange={this.onChange} value={this.state.date_due}/>
+              <DatePicker
+                selected={this.state.date_due} 
+                placeholderText='Date Due'
+                minDate={new Date()}
+                allowSameDay={true}
+                onChange={this.onChangeDate}
+                value={this.state.date_due}
+              />
               <span className="input-border-bottom"></span>
             </div> 
             <div className="input-wrapper">
