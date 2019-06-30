@@ -240,3 +240,12 @@ input:focus ~ span {
 .p-input {
   margin: 1em 0;
 }
+
+/** DATE PICKER */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}
