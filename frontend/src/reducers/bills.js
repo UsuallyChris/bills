@@ -21,13 +21,13 @@ export default function(state = initialState, action) {
     case ADD_BILL:
       return{
         ...state,
-        bills: [...state.bills, action.payload]
+        bills: [...state.bills, action.payload].sort( (a,b) => a.date_due > b.date_due)
       }
 
     case UPDATE_BILL:
       return{
         ...state,
-        bills: state.bills.map(bill => bill._id === action.payload.id ? action.payload : bill)
+        bills: state.bills.map(bill => bill._id === action.payload.id ? action.payload : bill).sort( (a,b) => a.date_due > b.date_due)
       }
 
     default:
