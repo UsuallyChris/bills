@@ -9,6 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import { faWindowClose, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 
+// Date Picker Import
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import parseISO from 'date-fns/parse/index';
+
 class BillCard extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +33,7 @@ class BillCard extends Component {
   componentDidMount() {
     this.setState({
       name: this.props.name,
-      date_due: this.props.date_due.toString().substring(0, 10),
+      date_due: parseISO(this.props.date_due.toString().substring(0, 10)),
       amount_due: this.props.amount_due,
       id: this.props.id
     })
@@ -71,7 +76,14 @@ class BillCard extends Component {
               <span className="input-border-bottom"></span>
             </div>
             <div className="input-wrapper p-input">
-              <input type="text" name="date_due" onChange={this.onChange} value={this.state.date_due}/>
+              <DatePicker
+                  selected={this.state.date_due} 
+                  placeholderText='Date Due'
+                  minDate={new Date()}
+                  allowSameDay={true}
+                  onChange={this.onChangeDate}
+                  value={this.state.date_due}
+                />
               <span className="input-border-bottom"></span>
             </div>
             <div className="input-wrapper p-input">
