@@ -6,7 +6,8 @@ import { getBills } from '../../actions/bills';
 
 // Component Imports
 import BillCard from '../cards/BillCard';
-import AddBillCard from '../cards/AddBillCard';
+//import AddBillCard from '../cards/AddBillCard';
+import FormikAddBill from '../cards/FormikAddBill';
 
 class Gutter extends Component{
 
@@ -18,7 +19,7 @@ class Gutter extends Component{
     return(
       <div className="gutter">
         <div className="gutter-card-container">
-          <AddBillCard />
+          <FormikAddBill />
           {this.props.bills.map(bill => (
             <BillCard
               key={bill._id}
