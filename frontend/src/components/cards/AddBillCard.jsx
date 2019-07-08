@@ -16,7 +16,7 @@ const BillSchema = Yup.object().shape({
   date_due: Yup.date()
     .required('Due Date is required.'),
   amount_due: Yup.number()
-    .positive('Amount due must be a positive number.')
+    .positive('Amount Due must be a positive number.')
     .required('Amount Due is required.')
 })
 
