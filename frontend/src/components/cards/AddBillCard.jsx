@@ -1,83 +1,56 @@
-import React , { Component } from 'react';
+import React from 'react';
 
 // Redux Imports
 import { connect } from 'react-redux';
 import { addBill } from '../../actions/bills';
 
-// Date Picker Import
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// Formik Imports
+import { Formik, Form, Field } from 'formik';
+import { Datepicker } from 'react-formik-ui';
 
-class AddBillCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      date_due: '',
-      amount_due: ''
-    }
-
-    this.onChange = this.onChange.bind(this);
-    this.onChangeDate = this.onChangeDate.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-  onChangeDate(date) {
-    this.setState({
-      date_due: date
-    })
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-    const { name, date_due, amount_due } = this.state;
-    const bill = { name, date_due, amount_due };
-    this.props.addBill(bill);
-    this.setState({
-      name: '',
-      date_due: '',
-      amount_due: ''
-    })
-  }
-
-  render() {
-    return(
-      <div className="add-bill-card add-bill-shadow">
-        <form onSubmit={this.onSubmit}>
-          <div className="card-content">
-            <div className="input-wrapper">
-              <input type="text" name="name" placeholder="Name" onChange={this.onChange} value={this.state.name}/>
-              <span className="input-border-bottom"></span>
-            </div>             
-            <div className="input-wrapper">
-              <DatePicker
-                selected={this.state.date_due} 
-                placeholderText='Date Due'
-                minDate={new Date()}
-                allowSameDay={true}
-                onChange={this.onChangeDate}
-                value={this.state.date_due}
-              />
-              <span className="input-border-bottom"></span>
-            </div> 
-            <div className="input-wrapper">
-              <input type="text" name="amount_due" placeholder="Amount Due" onChange={this.onChange} value={this.state.amount_due}/>
-              <span className="input-border-bottom"></span>
-            </div>  
+function AddBillCard(props) {
+  return(
+    <Formik
+      initialValues={{
+        name: '',
+        date_due: '',
+        amount_due: ''
+      }}
+      onSubmit={(values, { setSubmitting, setValues }) => {
+        const { name, date_due, amount_due } = values;
+        const bill = { name, date_due, amount_due };
+        props.addBill(bill);
+        setValues({
+          name: '',
+          date_due: '',
+          amount_due: ''
+        })
+        setSubmitting(false);
+      }}
+    >
+      {({ isSubmitting }) => (
+            <div className="add-bill-card add-bill-shadow">
+              <Form>
+                <div className="card-content">
+                  <Field type="text" name="name" placeholder="Name" />      
+                  <Datepicker
+                    name='date_due'
+                    placeholder='Date Due'
+                    minDate={new Date()}
+                    allowSameDay={true}
+                    dateFormat="MMMM d, yyyy"
+                    strictParsing
+                  />
+                  <Field type="text" name="amount_due" placeholder="Amount Due" />
+                </div>
+                <div className="add-card-buttons">
+                  <button type="submit" className="submit-button" disabled={isSubmitting}>Add Bill</button>
+                </div>
+              </Form>
           </div>
-          <div className="add-card-buttons">
-            <input type="submit" value="Add Bill"/>
-          </div>
-        </form>
-      </div>
-    );
-  }
+      )}
+    </Formik>
+  ); 
 }
 
 export default connect(null, { addBill })(AddBillCard);
