@@ -4,9 +4,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addBill } from '../../actions/bills';
 
-// Formik Imports
+// Formik and Yup Imports
 import { Formik, Form, Field } from 'formik';
 import { Datepicker } from 'react-formik-ui';
+import  * as Yup from 'yup';
+
+const BillSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(1, 'Length must be at least one character.')
+    .required('Name is required.'),
+  date_due: Yup.date()
+    .required('Due Date is required.'),
+  amount_due: Yup.number()
+    .positive('Amount due must be a positive number.')
+    .required('Amount Due is required.')
+})
 
 function AddBillCard(props) {
   return(
@@ -16,19 +28,16 @@ function AddBillCard(props) {
         date_due: '',
         amount_due: ''
       }}
-      onSubmit={(values, { setSubmitting, setValues }) => {
+      validationSchema={BillSchema}
+      onSubmit={(values, { setSubmitting, resetForm }) => {
         const { name, date_due, amount_due } = values;
         const bill = { name, date_due, amount_due };
         props.addBill(bill);
-        setValues({
-          name: '',
-          date_due: '',
-          amount_due: ''
-        })
         setSubmitting(false);
+        resetForm();
       }}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, errors, touched }) => (
             <div className="add-bill-card add-bill-shadow">
               <Form>
                 <div className="card-content">
@@ -46,6 +55,7 @@ function AddBillCard(props) {
                 <div className="add-card-buttons">
                   <button type="submit" className="submit-button" disabled={isSubmitting}>Add Bill</button>
                 </div>
+                {errors.name && touched.name ? console.log(errors.name) : null}
               </Form>
           </div>
       )}
