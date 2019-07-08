@@ -4,11 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addBill } from '../../actions/bills';
 
-// Date Picker Import
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
-// Formik Import
+// Formik Imports
 import { Formik, Form, Field } from 'formik';
 
 function FormikAddBill(props) {
