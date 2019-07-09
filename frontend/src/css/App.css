@@ -123,7 +123,8 @@ form {
   width: 90%;
 }
 
-input[type=text] {
+input[type=text],
+input[type=date] {
   font-family: inherit;
   background-color: transparent;
   border: 1px solid transparent;
@@ -133,11 +134,14 @@ input[type=text] {
   transition: border-bottom-color 0.3s ease-in-out;
 }
 
-
-
-input[type=text]:focus {
+input[type=text]:focus,
+input[type=date]:focus {
   outline: none;
   border-bottom-color: #673AB7;
+}
+
+.error {
+  display: none;
 }
 
 .submit-button {
