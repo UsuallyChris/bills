@@ -10,9 +10,12 @@ import { faEdit, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import { faWindowClose, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 
 // Date Picker Import
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import parseISO from 'date-fns/parse/index';
+//import parseISO from 'date-fns/parse/index';
+
+// Formik and Yup Imports
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Datepicker } from 'react-formik-ui';
+import * as Yup from 'yup';
 
 class BillCard extends Component {
   constructor(props) {
@@ -26,15 +29,12 @@ class BillCard extends Component {
     }
 
     this.toggleEditing = this.toggleEditing.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onChangeDate = this.onChangeDate.bind(this);
-    this.submitEdit = this.submitEdit.bind(this);
   }
   
   componentDidMount() {
     this.setState({
       name: this.props.name,
-      date_due: parseISO(this.props.date_due.toString().substring(0, 10)),
+      date_due: this.props.date_due,
       amount_due: this.props.amount_due,
       id: this.props.id
     })
@@ -52,56 +52,68 @@ class BillCard extends Component {
     }
   }
 
-  onChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-  onChangeDate(date) {
-    this.setState({
-      date_due: date
-    })
-  }
-
-  submitEdit(e) {
-    e.preventDefault();
-    const { name, date_due, amount_due } = this.state;
-    const bill = { name, date_due, amount_due };
-    this.props.updateBill(this.state.id, bill);
-    this.toggleEditing();
-  }
+  BillSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(1, 'Length must be at least one character.')
+      .required('Name is required.'),
+    date_due: Yup.date()
+      .typeError('Due Date must be a date.')
+      .min(new Date().getFullYear(), 'Due Date must be at least this year.')
+      .max(new Date('December 31, 2999'), 'Due Date must be in this century.')
+      .required('Due Date is required.'),
+    amount_due: Yup.number()
+      .typeError('Amount Due must be a number.')
+      .positive('Amount Due must be a positive number.')
+      .required('Amount Due is required.')
+  })
 
   render() {
 
     if(this.state.editing) {
       return (
         <div className="bill-card card-shadow">
-          <form className="card-content editing">
-            <div className="input-wrapper h2-input">
-              <input type="text" name="name" onChange={this.onChange} value={this.state.name}/>
-              <span className="input-border-bottom"></span>
-            </div>
-            <div className="input-wrapper p-input">
-              <DatePicker
-                  selected={this.state.date_due} 
-                  placeholderText='Date Due'
-                  minDate={new Date()}
-                  allowSameDay={true}
-                  onChange={this.onChangeDate}
-                  value={this.state.date_due}
-                />
-              <span className="input-border-bottom"></span>
-            </div>
-            <div className="input-wrapper p-input">
-              <input type="text" name="amount_due" onChange={this.onChange} value={this.state.amount_due}/>
-              <span className="input-border-bottom"></span>
-            </div>
-          </form>
-          <div className="card-buttons">
-            <button onClick={this.toggleEditing}><FontAwesomeIcon className="cancel-edit-button" icon={faWindowClose}/></button>
-            <button onClick={this.submitEdit}><FontAwesomeIcon className="accept-edit-button" icon={faCheckCircle}/></button>
-          </div>
+          <Formik
+            initialValues={{
+              id: this.state.id,
+              name: this.state.name,
+              date_due: this.state.date_due,
+              amount_due: this.state.amount_due
+            }}
+            validationSchema={this.BillSchema}
+            onSubmit={(values, { setSubmitting }) => {
+              const { name, date_due, amount_due } = values;
+              const bill = { name, date_due, amount_due };
+              this.props.updateBill(values.id, bill);
+              setSubmitting(false);
+              this.toggleEditing();
+            }}
+          >
+            {({ isSubmitting }) => (
+              <Form className="edit-card-content">
+                <div className="editing">
+                  <div className="h2-input">
+                    <Field type="text" name="name"/>
+                    <ErrorMessage name="name" />
+                  </div>
+                  <div className="p-input">
+                    <Datepicker 
+                      name="date_due"
+                      dateFormat="MMMM dd, yyyy"
+                    />
+                    <ErrorMessage name="date_due" />
+                  </div>
+                  <div className="p-input">
+                    <Field type="text" name="amount_due"/>
+                    <ErrorMessage name="amount_due" />
+                  </div>
+                </div>
+                <div className="card-buttons">
+                  <button onClick={this.toggleEditing}><FontAwesomeIcon className="cancel-edit-button" icon={faWindowClose}/></button>
+                  <button type="submit" disabled={isSubmitting}><FontAwesomeIcon className="accept-edit-button" icon={faCheckCircle}/></button>
+                </div>
+              </Form>
+            )}
+          </Formik>
         </div>
       );
     }
