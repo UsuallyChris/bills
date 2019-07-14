@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { addBill } from '../../actions/bills';
 
 // Formik and Yup Imports
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Datepicker } from 'react-formik-ui';
 import  * as Yup from 'yup';
 
@@ -46,16 +46,16 @@ function AddBillCard(props) {
               <Form>
                 <div className="card-content">
                   <Field type="text" name="name" placeholder="Name" />
-                  {errors.name && touched.name ? <p>{errors.name}</p> : null} 
+                  <ErrorMessage name="name" /> 
                   <Datepicker
-                    name='date_due'
-                    placeholder='Date Due'
-                    dateFormat='MMMM, dd yyyy'
+                    name="date_due"
+                    placeholder="Date Due"
+                    dateFormat="MMMM, dd yyyy"
                     minDate={new Date()}
                   />
-                  {errors.date_due && touched.date_due ? <p>{errors.date_due}</p> : null}
+                  <ErrorMessage name="date_due" />
                   <Field type="text" name="amount_due" placeholder="Amount Due" />
-                  {errors.amount_due && touched.amount_due ? <p>{errors.amount_due}</p> : null}
+                  <ErrorMessage name="amount_due" />
                 </div>
                 <div className="add-card-buttons">
                   <button type="submit" className="submit-button" disabled={isSubmitting}>Add Bill</button>
