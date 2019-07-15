@@ -9,9 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import { faWindowClose, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 
-// Date Picker Import
-//import parseISO from 'date-fns/parse/index';
-
 // Formik and Yup Imports
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Datepicker } from 'react-formik-ui';
