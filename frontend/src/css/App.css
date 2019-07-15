@@ -58,12 +58,12 @@ h6 {
   width: 75vw;
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: fixed;
   right: 0;
   top: 0;
+  padding: 2.5% 0;
 }
 
 /** CARDS */

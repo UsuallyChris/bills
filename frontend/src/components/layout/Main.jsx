@@ -1,12 +1,14 @@
 import React from 'react';
 
 // Component Imports
-import TotalCard from '../cards/TotalCard';
+import MainLeftColumn from './MainLeftColumn';
+import MainRightColumn from './MainRightColumn';
 
 function Main() {
   return(
     <div className="main">
-      <TotalCard />
+      <MainLeftColumn />
+      <MainRightColumn />
     </div>
   );
 };
