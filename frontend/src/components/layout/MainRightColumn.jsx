@@ -1,9 +1,12 @@
 import React from 'react';
 
+// Component Imports
+import CategoryCard from '../cards/CategoryCard';
+
 function MainRightColumn() {
   return(
     <div className="main-right-column">
-      <h1>Right</h1>
+      <CategoryCard />
     </div>
   );
 }

@@ -21,7 +21,7 @@ class TotalCard extends Component {
     })
 
     return(
-      <div className="total-card">
+      <div className="card-25 shadow">
         <h1>{formattedAmountDue.format(total)}</h1>
       </div>
     );

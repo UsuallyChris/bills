@@ -42,7 +42,7 @@ function AddBillCard(props) {
       }}
     >
       {({ isSubmitting }) => (
-          <div className="add-bill-card add-bill-shadow">
+          <div className="card-50 shadow">
             <Form>
               <div className="card-content">
                 <Field type="text" name="name" placeholder="Name" />
