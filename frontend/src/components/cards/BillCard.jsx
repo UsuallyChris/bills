@@ -27,12 +27,18 @@ class BillCard extends Component {
 
     this.toggleEditing = this.toggleEditing.bind(this);
   }
+
+  formattedAmountDue = new Intl.NumberFormat('en-US', {
+    style: 'decimal',
+    currency: 'USD',
+    minimumFractionDigits: 2
+  })
   
   componentDidMount() {
     this.setState({
       name: this.props.name,
       date_due: this.props.date_due,
-      amount_due: this.props.amount_due,
+      amount_due: this.formattedAmountDue.format(this.props.amount_due),
       id: this.props.id
     })
   }
@@ -81,6 +87,7 @@ class BillCard extends Component {
               const { name, date_due, amount_due } = values;
               const bill = { name, date_due, amount_due };
               this.props.updateBill(values.id, bill);
+              this.setState({ name, date_due, amount_due });
               setSubmitting(false);
               this.toggleEditing();
             }}
