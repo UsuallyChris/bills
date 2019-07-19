@@ -51,7 +51,7 @@ function AddBillCard(props) {
               <div className="card-content">
                 <div className="input-wrapper">
                   <Field type="text" name="name" placeholder="Name" />
-                  <ErrorMessage name="name" />
+                  <ErrorMessage name="name" render={msg => <span className="error-message">{msg}</span>}/>
                 </div>
                 <div className="input-wrapper">
                   <Datepicker
@@ -60,11 +60,11 @@ function AddBillCard(props) {
                     dateFormat="MMMM, dd yyyy"
                     minDate={new Date()}
                   />
-                  <ErrorMessage name="date_due" />
+                  <ErrorMessage name="date_due" render={msg => <span className="error-message">{msg}</span>}/>
                 </div>
                 <div className="input-wrapper">
                   <Field type="text" name="amount_due" placeholder="Amount Due" />
-                  <ErrorMessage name="amount_due" />
+                  <ErrorMessage name="amount_due" render={msg => <span className="error-message">{msg}</span>}/>
                 </div>
               </div>
               <div className="add-card-buttons">

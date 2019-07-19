@@ -132,7 +132,7 @@ h6 {
 .card-50 {
   width: 80%;
   border-radius: 5px;
-  padding: calc(32px + 3rem) 32px 32px 32px;
+  padding: calc(32px + 2rem) 32px 32px 32px;
   background: #fff;
   display: flex;
   align-items: center;
@@ -187,8 +187,28 @@ input[type=date]:focus {
   border-bottom-color: #673AB7;
 }
 
+.card-content:first-child {
+  margin-top: 16px;
+}
+
 .input-wrapper {
-  padding-bottom: 24px;
+  padding-bottom: 25px;
+  position: relative;
+}
+
+.error-message {
+  color: #E74C3C;
+  background-color: #FFCDD2;
+  height: 24px;
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 5px 5px;
 }
 
 .error {
