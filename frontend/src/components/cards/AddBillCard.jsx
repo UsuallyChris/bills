@@ -49,17 +49,23 @@ function AddBillCard(props) {
             <CardHeader heading="Add New Bill:" />
             <Form>
               <div className="card-content">
-                <Field type="text" name="name" placeholder="Name" />
-                <ErrorMessage name="name" /> 
-                <Datepicker
-                  name="date_due"
-                  placeholder="Date Due"
-                  dateFormat="MMMM, dd yyyy"
-                  minDate={new Date()}
-                />
-                <ErrorMessage name="date_due" />
-                <Field type="text" name="amount_due" placeholder="Amount Due" />
-                <ErrorMessage name="amount_due" />
+                <div className="input-wrapper">
+                  <Field type="text" name="name" placeholder="Name" />
+                  <ErrorMessage name="name" />
+                </div>
+                <div className="input-wrapper">
+                  <Datepicker
+                    name="date_due"
+                    placeholder="Date Due"
+                    dateFormat="MMMM, dd yyyy"
+                    minDate={new Date()}
+                  />
+                  <ErrorMessage name="date_due" />
+                </div>
+                <div className="input-wrapper">
+                  <Field type="text" name="amount_due" placeholder="Amount Due" />
+                  <ErrorMessage name="amount_due" />
+                </div>
               </div>
               <div className="add-card-buttons">
                 <button type="submit" className="submit-button" disabled={isSubmitting}>Add Bill</button>
