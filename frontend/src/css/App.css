@@ -144,11 +144,12 @@ h6 {
 .card-50 {
   width: 80%;
   border-radius: 5px;
-  padding: 32px;
+  padding: calc(32px + 2.5rem) 32px 32px 32px;
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .card-100 {

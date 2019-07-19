@@ -9,6 +9,9 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Datepicker } from 'react-formik-ui';
 import  * as Yup from 'yup';
 
+// Component Imports
+import CardHeader from './CardHeader';
+
 const BillSchema = Yup.object().shape({
   name: Yup.string()
     .min(1, 'Length must be at least one character.')
@@ -43,6 +46,7 @@ function AddBillCard(props) {
     >
       {({ isSubmitting }) => (
           <div className="card-50 shadow">
+            <CardHeader heading="Add New Bill:" />
             <Form>
               <div className="card-content">
                 <Field type="text" name="name" placeholder="Name" />
