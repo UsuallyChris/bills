@@ -22,6 +22,7 @@ class TotalCard extends Component {
 
     return(
       <div className="card-25 shadow">
+        <span className="card-header">Total Due:</span>
         <h1>{formattedAmountDue.format(total)}</h1>
       </div>
     );
