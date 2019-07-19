@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 // Redux Imports
 import { connect } from 'react-redux';
 
+// Component Imports
+import CardHeader from './CardHeader';
+
 class TotalCard extends Component {
 
   render() {
@@ -22,7 +25,7 @@ class TotalCard extends Component {
 
     return(
       <div className="card-25 shadow">
-        <span className="card-header">Total Due:</span>
+        <CardHeader heading="Total Due:"/>
         <h1>{formattedAmountDue.format(total)}</h1>
       </div>
     );
