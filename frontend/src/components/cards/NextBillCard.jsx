@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 // Redux Imports
 import { connect } from 'react-redux'
 
+// Component Imports
+import CardHeader from './CardHeader';
+
 class NextBillCard extends Component {
 
   render() {
@@ -19,6 +22,7 @@ class NextBillCard extends Component {
 
     return(
       <div className="card-25 shadow">
+        <CardHeader heading="Next Bill Due:"/>
         <h2>{this.props.bill[0].name}</h2>
         <p>{this.props.bill[0].formatted_amount_due}</p>
         <p>{this.props.bill[0].formatted_date_due}</p>
