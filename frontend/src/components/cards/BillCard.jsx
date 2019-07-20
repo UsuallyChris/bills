@@ -80,7 +80,8 @@ class BillCard extends Component {
               id: this.state.id,
               name: this.state.name,
               date_due: this.state.date_due,
-              amount_due: this.state.amount_due
+              amount_due: this.state.amount_due,
+              category: ''
             }}
             validationSchema={this.BillSchema}
             onSubmit={(values, { setSubmitting }) => {
@@ -92,7 +93,7 @@ class BillCard extends Component {
               this.toggleEditing();
             }}
           >
-            {({ isSubmitting }) => (
+            {({ isSubmitting, values }) => (
               <Form className="edit-card-content">
                 <div className="editing">
                   <div className="h2-input input-wrapper">
@@ -109,6 +110,18 @@ class BillCard extends Component {
                   <div className="p-input input-wrapper">
                     <Field type="text" name="amount_due"/>
                     <ErrorMessage name="amount_due" render={msg => <span className="error-message">{msg}</span>}/>
+                  </div>
+                  <div className="p-input input-wrapper">
+                    <Field component="select" name="category" style={values.category === '' ? {color: '#D1C4E9'} : {color: '#000'}}>
+                      <option value="" disabled selected hidden>Select Category...</option>
+                      <option value="utilities">Utilities</option>
+                      <option value="credit_card">Credit Card</option>
+                      <option value="home">Home</option>
+                      <option value="education">Education</option>
+                      <option value="vehicle">Vehicle</option>
+                      <option value="other">Other</option>
+                    </Field>
+                    <ErrorMessage name="category" render={msg => <span className="error-message">{msg}</span>}/>
                   </div>
                 </div>
                 <div className="card-buttons">

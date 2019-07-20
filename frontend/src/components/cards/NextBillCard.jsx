@@ -26,6 +26,7 @@ class NextBillCard extends Component {
         <h2>{this.props.bill[0].name}</h2>
         <p>{this.props.bill[0].formatted_amount_due}</p>
         <p>{this.props.bill[0].formatted_date_due}</p>
+        <p>Category: Other</p>
       </div>
     )
   }
