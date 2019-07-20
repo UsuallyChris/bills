@@ -24,7 +24,9 @@ const BillSchema = Yup.object().shape({
   amount_due: Yup.number()
     .typeError('Amount Due must be a number.')
     .positive('Amount Due must be a positive number.')
-    .required('Amount Due is required.')
+    .required('Amount Due is required.'),
+  category: Yup.string()
+    .required('Choose a category.')
 })
 
 function AddBillCard(props) {
@@ -33,7 +35,8 @@ function AddBillCard(props) {
       initialValues={{
         name: '',
         date_due: '',
-        amount_due: ''
+        amount_due: '',
+        category: ''
       }}
       validationSchema={BillSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -65,6 +68,18 @@ function AddBillCard(props) {
                 <div className="input-wrapper">
                   <Field type="text" name="amount_due" placeholder="Amount Due" />
                   <ErrorMessage name="amount_due" render={msg => <span className="error-message">{msg}</span>}/>
+                </div>
+                <div className="input-wrapper">
+                  <Field component="select" name="category" style={{color: '#D1C4E9'}}>
+                    <option value="" disabled selected hidden>Select Category...</option>
+                    <option value="utilities">Utilities</option>
+                    <option value="credit_card">Credit Card</option>
+                    <option value="home">Home</option>
+                    <option value="education">Education</option>
+                    <option value="vehicle">Vehicle</option>
+                    <option value="other">Other</option>
+                  </Field>
+                  <ErrorMessage name="category" render={msg => <span className="error-message">{msg}</span>}/>
                 </div>
               </div>
               <div className="add-card-buttons">

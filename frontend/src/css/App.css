@@ -171,7 +171,8 @@ form {
 }
 
 input[type=text],
-input[type=date] {
+input[type=date],
+select {
   font-family: inherit;
   background-color: transparent;
   border: 1px solid transparent;
@@ -182,9 +183,28 @@ input[type=date] {
 }
 
 input[type=text]:focus,
-input[type=date]:focus {
+input[type=date]:focus,
+select:focus {
   outline: none;
   border-bottom-color: #673AB7;
+}
+
+::placeholder {
+  color: #D1C4E9;
+  opacity: 1;
+}
+
+option {
+  color: #000;
+}
+
+select {
+  appearance: none;
+  outline: none;
+}
+
+select option {
+  font-family: 'Lato';
 }
 
 .input-wrapper {
