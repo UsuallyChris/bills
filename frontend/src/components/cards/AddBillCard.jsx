@@ -47,7 +47,7 @@ function AddBillCard(props) {
         resetForm();
       }}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, values }) => (
           <div className="card-50 shadow">
             <CardHeader heading="Add New Bill:" />
             <Form>
@@ -70,7 +70,7 @@ function AddBillCard(props) {
                   <ErrorMessage name="amount_due" render={msg => <span className="error-message">{msg}</span>}/>
                 </div>
                 <div className="input-wrapper">
-                  <Field component="select" name="category" style={{color: '#D1C4E9'}}>
+                  <Field component="select" name="category" style={values.category === '' ? {color: '#D1C4E9'} : {color: '#000'}}>
                     <option value="" disabled selected hidden>Select Category...</option>
                     <option value="utilities">Utilities</option>
                     <option value="credit_card">Credit Card</option>
