@@ -95,20 +95,20 @@ class BillCard extends Component {
             {({ isSubmitting }) => (
               <Form className="edit-card-content">
                 <div className="editing">
-                  <div className="h2-input">
+                  <div className="h2-input input-wrapper">
                     <Field type="text" name="name"/>
-                    <ErrorMessage name="name" />
+                    <ErrorMessage name="name" render={msg => <span className="error-message">{msg}</span>}/>
                   </div>
-                  <div className="p-input">
+                  <div className="p-input input-wrapper">
                     <Datepicker 
                       name="date_due"
                       dateFormat="MMMM dd, yyyy"
                     />
-                    <ErrorMessage name="date_due" />
+                    <ErrorMessage name="date_due" render={msg => <span className="error-message">{msg}</span>}/>
                   </div>
-                  <div className="p-input">
+                  <div className="p-input input-wrapper">
                     <Field type="text" name="amount_due"/>
-                    <ErrorMessage name="amount_due" />
+                    <ErrorMessage name="amount_due" render={msg => <span className="error-message">{msg}</span>}/>
                   </div>
                 </div>
                 <div className="card-buttons">
