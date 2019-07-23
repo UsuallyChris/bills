@@ -72,12 +72,12 @@ function AddBillCard(props) {
                 <div className="input-wrapper">
                   <Field component="select" name="category" style={values.category === '' ? {color: '#D1C4E9'} : {color: '#000'}}>
                     <option value="" disabled defaultValue hidden>Select Category...</option>
-                    <option value="utilities">Utilities</option>
-                    <option value="credit_card">Credit Card</option>
-                    <option value="home">Home</option>
-                    <option value="education">Education</option>
-                    <option value="vehicle">Vehicle</option>
-                    <option value="other">Other</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Home">Home</option>
+                    <option value="Education">Education</option>
+                    <option value="Vehicle">Vehicle</option>
+                    <option value="Other">Other</option>
                   </Field>
                   <ErrorMessage name="category" render={msg => <span className="error-message">{msg}</span>}/>
                 </div>

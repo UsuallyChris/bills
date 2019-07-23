@@ -15,7 +15,7 @@ const BillSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['utilities', 'credit_card', 'home', 'education', 'vehicle', 'other'],
+    enum: ['Utilities', 'Credit Card', 'Home', 'Education', 'Vehicle', 'Other'],
     required: true
   }
 });
