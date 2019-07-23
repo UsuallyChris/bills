@@ -13,6 +13,11 @@ const BillSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  category: {
+    type: String,
+    enum: ['utilities', 'credit_card', 'home', 'education', 'vehicle', 'other'],
+    required: true
+  }
 });
 
 BillSchema

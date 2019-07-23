@@ -24,7 +24,8 @@ router.post('/', async (req, res) => {
   const bill = new Bill({
     name: req.body.name.trim(),
     date_due: req.body.date_due,
-    amount_due: req.body.amount_due
+    amount_due: req.body.amount_due,
+    category: req.body.category
   });
 
   await bill.save()

@@ -40,8 +40,8 @@ function AddBillCard(props) {
       }}
       validationSchema={BillSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        const { name, date_due, amount_due } = values;
-        const bill = { name, date_due, amount_due };
+        const { name, date_due, amount_due, category } = values;
+        const bill = { name, date_due, amount_due, category };
         props.addBill(bill);
         setSubmitting(false);
         resetForm();
@@ -71,7 +71,7 @@ function AddBillCard(props) {
                 </div>
                 <div className="input-wrapper">
                   <Field component="select" name="category" style={values.category === '' ? {color: '#D1C4E9'} : {color: '#000'}}>
-                    <option value="" disabled selected hidden>Select Category...</option>
+                    <option value="" disabled defaultValue hidden>Select Category...</option>
                     <option value="utilities">Utilities</option>
                     <option value="credit_card">Credit Card</option>
                     <option value="home">Home</option>
