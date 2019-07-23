@@ -39,6 +39,7 @@ class BillCard extends Component {
       name: this.props.name,
       date_due: this.props.date_due,
       amount_due: this.formattedAmountDue.format(this.props.amount_due),
+      category: this.props.category,
       id: this.props.id
     })
   }
@@ -81,14 +82,14 @@ class BillCard extends Component {
               name: this.state.name,
               date_due: this.state.date_due,
               amount_due: this.state.amount_due,
-              category: ''
+              category: this.state.category
             }}
             validationSchema={this.BillSchema}
             onSubmit={(values, { setSubmitting }) => {
-              const { name, date_due, amount_due } = values;
-              const bill = { name, date_due, amount_due };
+              const { name, date_due, amount_due, category } = values;
+              const bill = { name, date_due, amount_due, category };
               this.props.updateBill(values.id, bill);
-              this.setState({ name, date_due, amount_due });
+              this.setState({ name, date_due, amount_due, category });
               setSubmitting(false);
               this.toggleEditing();
             }}
@@ -113,7 +114,6 @@ class BillCard extends Component {
                   </div>
                   <div className="p-input input-wrapper">
                     <Field component="select" name="category" style={values.category === '' ? {color: '#D1C4E9'} : {color: '#000'}}>
-                      <option value="" disabled selected hidden>Select Category...</option>
                       <option value="utilities">Utilities</option>
                       <option value="credit_card">Credit Card</option>
                       <option value="home">Home</option>
