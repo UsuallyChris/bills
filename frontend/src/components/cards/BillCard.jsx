@@ -141,7 +141,7 @@ class BillCard extends Component {
           <h2>{this.props.name}</h2>
           <p>{this.props.formatted_date_due}</p>
           <p>{this.props.formatted_amount_due}</p>
-          <p>Category: Other</p>
+          <p>Category: {this.props.category}</p>
         </div>
         <div className="card-buttons">
           <button onClick={this.toggleEditing}><FontAwesomeIcon className="edit-button" icon={faEdit}/></button>

@@ -26,6 +26,7 @@ class Gutter extends Component{
               formatted_date_due={bill.formatted_date_due}
               amount_due={bill.amount_due}
               formatted_amount_due={bill.formatted_amount_due}
+              category={bill.category}
             />
           ))}
         </div>
