@@ -13,6 +13,7 @@ class NextBillCard extends Component {
     if(this.props.bill[0] === undefined) {
       return(
         <div className="card-25 shadow">
+          <CardHeader heading="Next Bill Due:"/>
           <h2>Loading...</h2>
           <p>...</p>
           <p>...</p>
