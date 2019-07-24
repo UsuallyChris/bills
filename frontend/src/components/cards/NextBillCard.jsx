@@ -14,9 +14,10 @@ class NextBillCard extends Component {
       return(
         <div className="card-25 shadow">
           <CardHeader heading="Next Bill Due:"/>
-          <h2>Loading...</h2>
-          <p>...</p>
-          <p>...</p>
+          <h2>&nbsp;</h2>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
         </div>
       )
     }
