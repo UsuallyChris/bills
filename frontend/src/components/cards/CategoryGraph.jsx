@@ -16,7 +16,7 @@ class CategoryGraph extends Component {
     let education = 0;
     let vehicle = 0;
     let other = 0;
-    
+
     this.props.bills.map(bill => {
       switch(bill.category) {
         case 'Utilities':
@@ -49,9 +49,10 @@ class CategoryGraph extends Component {
           <BarChart
             data={data}
             margin={{top: 0, bottom: 0, left: 0, right: 0}}
+            layout="vertical"
           >
-            <XAxis dataKey="name"/>
-            <YAxis />
+            <XAxis type="number"/>
+            <YAxis type="category" dataKey="name"/>
             <Tooltip />
             <Bar dataKey="total" fill="#673AB7"/>
           </BarChart>
