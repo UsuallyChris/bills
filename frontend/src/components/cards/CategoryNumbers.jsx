@@ -37,7 +37,7 @@ class CategoryNumbers extends Component {
     })
 
     return(
-      <div className="category-conatiner">
+      <div className="category-container">
         <div className="number-wrapper">
           <h2>Utilities:</h2>
           <h2>{formattedAmountDue.format(utilities)}</h2>
