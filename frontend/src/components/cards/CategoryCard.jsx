@@ -9,6 +9,7 @@ function CategoryCard() {
     <div className="card-100 shadow">
       <CardHeader heading="Spending By Category:" />
       <CategoryNumbers />
+      <CategoryNumbers />
     </div>
   )
 }

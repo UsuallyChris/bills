@@ -37,13 +37,31 @@ class CategoryNumbers extends Component {
     })
 
     return(
-      <div>
-        <h2>{formattedAmountDue.format(utilities)}</h2>
-        <h2>{formattedAmountDue.format(credit)}</h2>
-        <h2>{formattedAmountDue.format(home)}</h2>
-        <h2>{formattedAmountDue.format(education)}</h2>
-        <h2>{formattedAmountDue.format(vehicle)}</h2>
-        <h2>{formattedAmountDue.format(other)}</h2>
+      <div className="category-conatiner">
+        <div className="number-wrapper">
+          <h2>Utilities:</h2>
+          <h2>{formattedAmountDue.format(utilities)}</h2>
+        </div>
+        <div className="number-wrapper">
+          <h2>Credit Cards:</h2>
+          <h2>{formattedAmountDue.format(credit)}</h2>
+        </div>  
+        <div className="number-wrapper">
+          <h2>Home:</h2>
+          <h2>{formattedAmountDue.format(home)}</h2>
+        </div>  
+        <div className="number-wrapper">
+          <h2>Education:</h2>
+          <h2>{formattedAmountDue.format(education)}</h2>
+        </div>  
+        <div className="number-wrapper">
+          <h2>Vehicle:</h2>
+          <h2>{formattedAmountDue.format(vehicle)}</h2>
+        </div>  
+        <div className="number-wrapper">
+          <h2>Other:</h2>
+          <h2>{formattedAmountDue.format(other)}</h2>
+        </div>        
       </div>
     );
 
