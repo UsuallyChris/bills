@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './css/Normalize.css';
 import './css/App.css';
 
@@ -10,15 +10,45 @@ import store from './store';
 import Gutter from './components/layout/Gutter';
 import Main from './components/layout/Main';
 
-function App() {
-  return (
-    <Provider store={store}>
-      <div className="app-wrapper">
-        <Gutter />
-        <Main />
-      </div>
-    </Provider>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      width: window.innerWidth
+    }
+
+    this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
+  }
+
+  componentWillMount() {
+    window.addEventListener('resize', this.handleWindowSizeChange);
+  }
+
+  handleWindowSizeChange() {
+    this.setState({
+      width: window.innerWidth
+    })
+  }
+
+  render() {
+
+    const { width } = this.state;
+
+    if(width < 1500) {
+      return(
+        <h1>Working!</h1>
+      );
+    } else {
+      return (
+        <Provider store={store}>
+          <div className="app-wrapper">
+            <Gutter />
+            <Main />
+          </div>
+        </Provider>
+      );
+    }
+  }
 }
 
 export default App;

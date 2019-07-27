@@ -348,3 +348,9 @@ select option {
 .react-datepicker__input-container {
   width: 100%;
 }
+
+/** MOBILE STYLES */
+.mobile-container {
+  width: 100vw;
+  height: 100vh;
+}
