@@ -10,6 +10,11 @@ import store from './store';
 import Gutter from './components/layout/Gutter';
 import Main from './components/layout/Main';
 
+import {} from 'react-router-dom';
+
+// Mobile Component Imports
+import MobileContainer from './components/layout/mobile/MobileContainer';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +41,11 @@ class App extends Component {
 
     if(width < 1500) {
       return(
-        <h1>Working!</h1>
+        <Provider store={store}>
+          <MobileContainer>
+            <h1>Working!</h1>
+          </MobileContainer>
+        </Provider>
       );
     } else {
       return (
