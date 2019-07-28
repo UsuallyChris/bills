@@ -10,7 +10,8 @@ import store from './store';
 import Gutter from './components/layout/Gutter';
 import Main from './components/layout/Main';
 
-import {} from 'react-router-dom';
+// React Router Imports
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 // Mobile Component Imports
 import MobileAddBill from './components/layout/mobile/MobileAddBill';
@@ -42,7 +43,11 @@ class App extends Component {
     if(width < 1500) {
       return(
         <Provider store={store}>
-          <MobileAddBill />
+          <BrowserRouter>
+            <Switch>
+              <Route path='/add' component={MobileAddBill}/>
+            </Switch>
+          </BrowserRouter>
         </Provider>
       );
     } else {
