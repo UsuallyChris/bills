@@ -15,6 +15,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 // Mobile Component Imports
 import MobileAddBill from './components/layout/mobile/MobileAddBill';
+import MobileBills from './components/layout/mobile/MobileBills';
 
 class App extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class App extends Component {
         <Provider store={store}>
           <BrowserRouter>
             <Switch>
+              <Route exact path='/' component={MobileBills}/>
               <Route path='/add' component={MobileAddBill}/>
             </Switch>
           </BrowserRouter>

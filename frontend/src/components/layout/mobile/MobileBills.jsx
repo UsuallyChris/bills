@@ -2,14 +2,14 @@ import React from 'react';
 
 // Component Imports
 import MobileContainer from './MobileContainer';
-import AddBillCard from '../../cards/AddBillCard';
+import Gutter from '../Gutter';
 
-function MobileAddBill() {
+function MobileBills() {
   return(
     <MobileContainer>
-      <AddBillCard />
+      <Gutter />
     </MobileContainer>
-  )
+  );
 }
 
-export default MobileAddBill;
+export default MobileBills;
