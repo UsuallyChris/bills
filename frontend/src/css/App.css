@@ -357,10 +357,15 @@ select option {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  padding: 32px 0;
 }
 
 @media only screen and (max-width: 1500px) {
   .gutter {
     width: 100%;
+  }
+
+  .number-wrapper h2 {
+    font-size: 1.1em;
   }
 }
