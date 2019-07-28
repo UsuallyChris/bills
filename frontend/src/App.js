@@ -13,7 +13,7 @@ import Main from './components/layout/Main';
 import {} from 'react-router-dom';
 
 // Mobile Component Imports
-import MobileContainer from './components/layout/mobile/MobileContainer';
+import MobileAddBill from './components/layout/mobile/MobileAddBill';
 
 class App extends Component {
   constructor(props) {
@@ -42,9 +42,7 @@ class App extends Component {
     if(width < 1500) {
       return(
         <Provider store={store}>
-          <MobileContainer>
-            <h1>Working!</h1>
-          </MobileContainer>
+          <MobileAddBill />
         </Provider>
       );
     } else {
