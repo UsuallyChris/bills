@@ -1,9 +1,15 @@
 import React from 'react';
 
+// Component Imports
+import MobileMenu from './MobileMenu';
+
 function MobileContainer(props) {
   return(
-    <div className="mobile-container">
-      {props.children}
+    <div>
+      <div className="mobile-container" style={{width: '100vw'}}>
+        {props.children}
+      </div>
+      <MobileMenu />
     </div>
   );
 }
