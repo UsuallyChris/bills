@@ -43,7 +43,7 @@ class App extends Component {
 
     const { width } = this.state;
 
-    if(width < 1500) {
+    if(width < 1300) {
       return(
         <Provider store={store}>
           <BrowserRouter>

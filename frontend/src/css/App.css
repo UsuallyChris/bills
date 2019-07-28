@@ -368,7 +368,11 @@ select option {
   top: 0;
   overflow-x: hidden;
   background-color: #fff;
-  transition: 0.5s; 
+  transition: 0.25s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .mobile-menu-button {
@@ -385,7 +389,24 @@ select option {
   right: 16px;
 }
 
-@media only screen and (max-width: 1500px) {
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: 40%;
+  justify-content: space-around;
+}
+
+.menu-links a,
+.menu-links a:visited {
+  text-decoration: none;
+  font-size: 1.5em;
+  color: #673AB7;
+}
+
+
+
+@media only screen and (max-width: 1300px) {
   .gutter {
     width: 100%;
   }
