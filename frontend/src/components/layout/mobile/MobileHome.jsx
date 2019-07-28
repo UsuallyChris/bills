@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 
 // Component Imports
 import MobileContainer from './MobileContainer';
-import CategoryCard from '../../cards/CategoryCard';
+import TotalCard from '../../cards/TotalCard';
+import NextBillCard from '../../cards/NextBillCard';
 
 // Redux Imports
 import { connect } from 'react-redux';
 import { getBills } from '../../../actions/bills';
 
-
-class MobileCategories extends Component {
-
+class MobileHome extends Component {
+  
   componentDidMount() {
     this.props.getBills();
   }
@@ -18,7 +18,8 @@ class MobileCategories extends Component {
   render() {
     return(
       <MobileContainer>
-        <CategoryCard />
+        <TotalCard />
+        <NextBillCard />
       </MobileContainer>
     );
   }
@@ -28,4 +29,4 @@ const mapStateToProps = state => ({
   bills: state.bills.bills,
 })
 
-export default connect(mapStateToProps, { getBills })(MobileCategories);
+export default connect(mapStateToProps, { getBills })(MobileHome);
