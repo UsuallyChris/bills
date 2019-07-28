@@ -6,9 +6,9 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 function OpenMenu(props) {
   return (
-    <button className="open-menu shadow" onClick={props.function}>
+    <div className="mobile-menu-button shadow" onClick={props.function}>
       <FontAwesomeIcon icon={faBars}/>
-    </button>
+    </div>
   );
 }
 

@@ -371,7 +371,7 @@ select option {
   transition: 0.5s; 
 }
 
-.open-menu {
+.mobile-menu-button {
   background-color: #673AB7;
   border-radius: 100%;
   color: #fff;

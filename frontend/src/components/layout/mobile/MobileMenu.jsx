@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 // Component Imports
 import OpenMenu from './OpenMenu';
+import CloseMenu from './CloseMenu';
 
 class MobileMenu extends Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class MobileMenu extends Component {
       <div>
         <div className="mobile-menu" style={{width: this.state.width}}>
           <h1>Menu</h1>
+          <CloseMenu function={this.closeMenu}/>
         </div>
         <OpenMenu function={this.openMenu}/>
       </div>
