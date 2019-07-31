@@ -6,7 +6,7 @@ import { GET_BILLS, DELETE_BILL, ADD_BILL, UPDATE_BILL } from './types';
 
 // GET JOBS ACTIONS
 export const getBills = () => dispatch => {
-  axios.get('http://localhost:5000/api/bills/')
+  axios.get('/api/bills/')
     .then(res => {
       dispatch({
         type: GET_BILLS,
@@ -16,7 +16,7 @@ export const getBills = () => dispatch => {
 };
 
 export const deleteBill = (id) => dispatch => {
-  axios.delete(`http://localhost:5000/api/bills/${id}`)
+  axios.delete(`/api/bills/${id}`)
     .then(res => {
       dispatch({
         type: DELETE_BILL,
@@ -26,7 +26,7 @@ export const deleteBill = (id) => dispatch => {
 }
 
 export const addBill = (bill) => dispatch => {
-  axios.post('http://localhost:5000/api/bills', bill)
+  axios.post('/api/bills', bill)
     .then(res => {
       dispatch({
         type: ADD_BILL,
@@ -36,7 +36,7 @@ export const addBill = (bill) => dispatch => {
 }
 
 export const updateBill = (id, bill) => dispatch => {
-  axios.put(`http://localhost:5000/api/bills/${id}`, bill)
+  axios.put(`/api/bills/${id}`, bill)
     .then(res => {
       dispatch ({
         type: UPDATE_BILL,
