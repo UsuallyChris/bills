@@ -4,7 +4,9 @@
   "description": "Express.js server for bills app.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Chris Schoonover",
   "license": "ISC",

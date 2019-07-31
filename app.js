@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 // dotenv
 dotenv.config();
@@ -24,5 +25,14 @@ const bills = require('./routes/bills');
 
 // Route Configs
 app.use('/api/bills', bills);
+
+// Deploy Config
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+
+  app.get('*', (req,res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  });
+}
 
 app.listen(5000);
