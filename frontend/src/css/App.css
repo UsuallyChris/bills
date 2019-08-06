@@ -182,6 +182,19 @@ h6 {
   margin: 0;
 }
 
+.glance-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.glance-column {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+}
+
 /** INPUT AND FORMS */
 form {
   width: 90%;
